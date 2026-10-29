@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sum-all-in-range",
+    "title": "Sum All Numbers in a Range",
+    "language": "javascript",
+    "category": "Intermediate Algorithms",
+    "difficulty": "Easy",
+    "description": "Returns the sum of two numbers and all numbers between them in an array.",
+    "code": "function sumAll(arr) {\n  const min = Math.min(...arr);\n  const max = Math.max(...arr);\n  return Array.from({ length: max - min + 1 }, (_, i) => min + i)\n              .reduce((sum, num) => sum + num, 0);\n}"
+  },
+  {
+    "id": "dna-pairing",
+    "title": "DNA Pairing",
+    "language": "javascript",
+    "category": "Intermediate Algorithms",
+    "difficulty": "Medium",
+    "description": "Pairs missing DNA base elements using an efficient lookup object.",
+    "code": "function pairElement(str) {\n  const pairs = { A: 'T', T: 'A', C: 'G', G: 'C' };\n  return str.split('').map(char => [char, pairs[char]]);\n}"
+  },
+  {
+    "id": "convert-html-entities",
+    "title": "Convert HTML Entities",
+    "language": "javascript",
+    "category": "Intermediate Algorithms",
+    "difficulty": "Medium",
+    "description": "Replaces special characters in a string with their corresponding HTML entities using regex and object lookup.",
+    "code": "function convertHTML(str) {\n  const entities = {\n    '&': '&amp;',\n    '<': '&lt;',\n    '>': '&gt;',\n    '\"': '&quot;',\n    \"'\": '&apos;'\n  };\n  return str.replace(/[&<>\"']/g, match => entities[match]);\n}"
+  },
+  {
+    "id": "python-two-sum",
+    "title": "Two Sum",
+    "language": "python",
+    "category": "Data Structures",
+    "difficulty": "Easy",
+    "description": "Finds indices of the two numbers such that they add up to a specific target.",
+    "code": "def two_sum(nums, target):\n    seen = {}\n    for i, num in enumerate(nums):\n        diff = target - num\n        if diff in seen:\n            return [seen[diff], i]\n        seen[num] = i\n    return []"
+  }
+]
