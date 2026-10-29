@@ -3,6 +3,7 @@ import {useState} from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import HeroBanner from './components/HeroBanner';
+import SolutionGrid from './components/SolutionGrid';
 
 import solutions from './solutions.json'
 
@@ -11,6 +12,7 @@ import solutions from './solutions.json'
 export default function App() {
   const [selectedLanguage, setSelectedLanguage] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedSolution, setSelectedSolution] = useState(null)
 
   const totalSolutions = solutions.length;
 
@@ -33,6 +35,14 @@ export default function App() {
           totalSolutions={totalSolutions}
           solutions={solutions}
           />
+
+        <SolutionGrid
+        solutions={solutions}
+        selectedLanguage={selectedLanguage}
+        searchQuery={searchQuery}
+        onOpenModal={(solution) => setSelectedSolution(solution)}
+        />
+         
 
         </div>
 
