@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import HeroBanner from './components/HeroBanner';
 import SolutionGrid from './components/SolutionGrid';
+import CodeModal from './components/CodeModal';
 
 import solutions from './solutions.json'
 
@@ -37,17 +38,19 @@ export default function App() {
           />
 
         <SolutionGrid
+        key={`${selectedLanguage}-${searchQuery}`}
         solutions={solutions}
         selectedLanguage={selectedLanguage}
         searchQuery={searchQuery}
         onOpenModal={(solution) => setSelectedSolution(solution)}
         />
-         
-
         </div>
-
-
       </main>
+
+      <CodeModal 
+        solution={selectedSolution} 
+        onClose={() => setSelectedSolution(null)} 
+      />
     </div>
   )
 }

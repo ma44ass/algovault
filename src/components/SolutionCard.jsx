@@ -16,7 +16,7 @@ export default function SolutionCard({ solution, onOpenModal }) {
             {solution.language}
           </span>
           <span
-            className={`text-xs font-medium px-2.5 py-0.5 rounded-full border ${difficultyMarker[solution.difficulty] || "bg-gray-100 text-gray-700"}`}
+            className={`text-xs font-medium px-2.5 py-0.5 rounded-lg border ${difficultyMarker[solution.difficulty] || "bg-gray-100 text-gray-700"}`}
           >
             {solution.difficulty}
           </span>
