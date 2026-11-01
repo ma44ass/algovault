@@ -1,4 +1,9 @@
 import { useState } from "react";
+import AceEditor from "react-ace";
+
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/theme-tomorrow_night_eighties";
 
 export default function CodeModal({ solution, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -90,12 +95,28 @@ export default function CodeModal({ solution, onClose }) {
                 {copied ? "✓ Copied!" : "Copy Code"}
               </button>
             </div>
-            <pre className="bg-[#1A1C1A] text-[#FBF9F1] p-4 rounded-b-md overflow-x-auto text-md font-mono leading-relaxed">
-              <code>
-                {currentApproach.code ||
-                  '// Add a "code" property to your solution object'}
-              </code>
-            </pre>
+            
+            <AceEditor
+              mode={solution.language === "python" ? "python" : "javascript"}
+              theme="tomorrow_night_eighties"
+              value={currentApproach.code}
+              name="code-editor-view"
+              readOnly={true}
+              fontSize={16}
+              showPrintMargin={false}
+              showGutter={true}
+              highlightActiveLine={true}
+              width="100%"
+              height="300px"
+              setOptions={{
+                enableBasicAutocompletion: false,
+                enableLiveAutocompletion: false,
+                showLineNumbers: true,
+                tabSize: 2,
+                fontFamily: "JetBrains Mono, monospace",
+              }}
+            />
+         
           </div>
 
           <div className="px-2 py-2 flex justify-end">
