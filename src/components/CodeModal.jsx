@@ -2,12 +2,23 @@ import { useState } from "react";
 
 export default function CodeModal({ solution, onClose }) {
   const [copied, setCopied] = useState(false);
+  const [activeApproach, setActiveApproach] = useState(0);
 
   if (!solution) return null;
 
+  const approaches = solution.approaches || [
+    {
+      name: "Primary Solution",
+      description: solution.description,
+      code: solution.code || "//No code snippet provided",
+    },
+  ];
+
+  const currentApproach = approaches[activeApproach];
+
   const handleCopy = () => {
     navigator.clipboard.writeText(
-      solution.code || "// No code snippet provided",
+      currentApproach.code || "// No code snippet provided",
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -43,22 +54,45 @@ export default function CodeModal({ solution, onClose }) {
             <h2 className="text-2xl font-bold text-[#1A1C1A]">
               {solution.title}
             </h2>
-            <p className="text-sm text-[#6C726E] mt-3 leading-relaxed">
+            <p className="text-lg text-[#6C726E] mt-3 leading-relaxed">
               {solution.description}
             </p>
           </div>
 
+          {approaches.length > 1 && (
+            <div className="flex gap-2 pb-3">
+              {approaches.map((approch, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveApproach(index)}
+                  className={`px-3 py-1.5 rounded-xs font-semibold transition-colors cursor-pointer
+                  ${
+                    activeApproach === index
+                      ? "bg-[#E2703A] text-white"
+                      : "bg-[#EFEADF] text-[#6C726E] hover:bg-[#E5E0D8]"
+                  }`}
+                >
+                  {approch.name}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {currentApproach.description && approaches.length > 1 && (
+            <p className="text-[#6C724E] italic bg-[#F7F4EA] p-3 rounded-md border border-[#E5E0D8]">{currentApproach.description}</p>
+          )}
+
           {/* Code viewer */}
           <div>
-            <div className="flex items-center justify-between px-4 py-2.5 rounded-t-xl border-t border-x border-[#E5E0D8] text-xs ">
+            <div className="flex items-center justify-between px-4 py-2.5 rounded-t-xl border-t border-x border-[#E5E0D8] text-md ">
               <span>Implementation Code</span>
               <button onClick={handleCopy}>
                 {copied ? "✓ Copied!" : "Copy Code"}
               </button>
             </div>
-            <pre className="bg-[#1A1C1A] text-[#FBF9F1] p-4 rounded-b-md overflow-x-auto text-sm font-mono leading-relaxed">
+            <pre className="bg-[#1A1C1A] text-[#FBF9F1] p-4 rounded-b-md overflow-x-auto text-md font-mono leading-relaxed">
               <code>
-                {solution.code ||
+                {currentApproach.code ||
                   '// Add a "code" property to your solution object'}
               </code>
             </pre>
@@ -66,7 +100,7 @@ export default function CodeModal({ solution, onClose }) {
 
           <div className="px-2 py-2 flex justify-end">
             <button
-              className="px-4 py-2 rounded-md bg-[#E2703A] text-white text-xs font-semibold hover:bg-[#cf6230] transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-md bg-[#E2703A] text-white text-md font-semibold hover:bg-[#cf6230] transition-colors cursor-pointer"
               onClick={onClose}
             >
               close

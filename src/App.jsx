@@ -47,7 +47,8 @@ export default function App() {
         </div>
       </main>
 
-      <CodeModal 
+      <CodeModal
+        key={selectedSolution ? selectedSolution.id : 'closed'}
         solution={selectedSolution} 
         onClose={() => setSelectedSolution(null)} 
       />
