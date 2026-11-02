@@ -5,6 +5,7 @@ import SolutionCard from "./SolutionCard";
 export default function SolutionGrid({
   solutions,
   selectedLanguage,
+  selectedDifficulty,
   searchQuery,
   onOpenModal,
 }) {
@@ -15,6 +16,10 @@ export default function SolutionGrid({
       selectedLanguage === "all" ||
       item.language.toLowerCase() === selectedLanguage.toLowerCase();
 
+    const matchesDifficulty =
+      selectedDifficulty === "all" ||
+      item.difficulty?.toLowerCase() === selectedDifficulty.toLowerCase();
+
     const query = searchQuery.toLowerCase();
     const matchesSearch =
       item.title.toLowerCase().includes(query) ||
@@ -22,7 +27,7 @@ export default function SolutionGrid({
       item.description.toLowerCase().includes(query) ||
       item.language.toLowerCase().includes(query);
 
-    return matchesLanguage && matchesSearch;
+    return matchesLanguage && matchesDifficulty && matchesSearch;
   });
 
   if (filteredSolutions.length === 0) {
