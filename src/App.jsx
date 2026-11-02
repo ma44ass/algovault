@@ -6,7 +6,7 @@ import HeroBanner from './components/HeroBanner';
 import SolutionGrid from './components/SolutionGrid';
 import CodeModal from './components/CodeModal';
 
-import solutions from './solutions.json'
+import solutions from './data/solutions.json'
 
 
 
