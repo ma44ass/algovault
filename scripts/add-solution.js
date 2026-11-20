@@ -38,7 +38,7 @@ try{
         title : "",
         language : "javaScript",
         difficulty : "Easy",
-        category : "Basic Algorithm Scripting",
+        category : "Sets & Membership",
         description : "",
         src: "freeCodeCamp",
         approaches : [

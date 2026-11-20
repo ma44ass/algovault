@@ -4,7 +4,7 @@
     "title": "Palindrome Checker",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "JavaScript Algorithms",
+    "category": "String Manipulation",
     "description": "Return true if the given string is a palindrome. Otherwise, return false, ignoring punctuation, case, and spacing.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -25,7 +25,7 @@
     "title": "DNA Pairing",
     "language": "javascript",
     "difficulty": "Intermediate",
-    "category": "Intermediate Algorithm Scripting",
+    "category": "Array Transformation",
     "description": "Take each character, get its pair, and return results as a 2d array.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -46,7 +46,7 @@
     "title": "Find the Missing Letter",
     "language": "javascript",
     "difficulty": "Intermediate",
-    "category": "Intermediate Algorithm Scripting",
+    "category": "String Manipulation",
     "description": "Find the missing letter in the passed letter range and return it. If all letters are present in the range, return undefined.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -67,7 +67,7 @@
     "title": "Chunky Monkey",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "Array Transformation",
     "description": "Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -88,7 +88,7 @@
     "title": "Falsy Bouncer",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "Array Transformation",
     "description": "Remove all falsy values from an array. Falsy values in JavaScript are false, null, 0, \"\", undefined, and NaN.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -109,7 +109,7 @@
     "title": "HTML Entities Converter",
     "language": "javascript",
     "difficulty": "Intermediate",
-    "category": "Intermediate Algorithm Scripting",
+    "category": "String Manipulation",
     "description": "Convert the characters &, <, >, \", and ' to their corresponding HTML entities.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -130,7 +130,7 @@
     "title": "Largest Numbers in Arrays",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "Array Transformation",
     "description": "Return an array consisting of the largest number from each provided sub-array.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -151,7 +151,7 @@
     "title": "Mutation Checker",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "String Manipulation",
     "description": "Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -172,7 +172,7 @@
     "title": "Reverse a String",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "String Manipulation",
     "description": "Reverse the provided string and return the reversed string.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -193,7 +193,7 @@
     "title": "Finders Keepers",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "Array Transformation",
     "description": "Create a function that looks through an array and returns the first element in it that passes a truth test.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -214,7 +214,7 @@
     "title": "Sum All Numbers in a Range",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Intermediate Algorithm Scripting",
+    "category": "Math & Ranges",
     "description": "We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -235,7 +235,7 @@
     "title": "Sorted Union",
     "language": "javascript",
     "difficulty": "Intermediate",
-    "category": "Intermediate Algorithm Scripting",
+    "category": "Sets & Membership",
     "description": "Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -256,7 +256,7 @@
     "title": "Title Case a Sentence",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "String Manipulation",
     "description": "Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -277,7 +277,7 @@
     "title": "Slice and Splice",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "Array Transformation",
     "description": "Copy each element of the first array into the second array, in order, beginning at the specified index index.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -298,7 +298,7 @@
     "title": "Find the Longest Word in a String",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "String Manipulation",
     "description": "Return the length of the longest word in the provided sentence.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -319,7 +319,7 @@
     "title": "Symmetric Difference Function",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Intermediate Algorithm Scripting",
+    "category": "Sets & Membership",
     "description": "Compare two arrays and return a new array with any items found in only one of the two given arrays, but not both.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -340,7 +340,7 @@
     "title": "Sorted Index Finder",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Basic Algorithm Scripting",
+    "category": "Sets & Membership",
     "description": "Return the lowest index at which a value should be inserted into an array once it has been sorted in ascending order.",
     "src": "FreeCodeCamp",
     "approaches": [
@@ -361,7 +361,7 @@
     "title": "Book Organizer",
     "language": "javascript",
     "difficulty": "Easy",
-    "category": "Higher Order Functions and Callbacks",
+    "category": "Sorting & Callbacks",
     "description": "Filter books released on or before a specified year and sort the filtered result in ascending order using a comparator callback.",
     "src": "FreeCodeCamp",
     "approaches": [
