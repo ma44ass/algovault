@@ -48,7 +48,7 @@ export default function App() {
           <HeroBanner totalSolutions={totalSolutions} solutions={solutions} />
 
           <SolutionGrid
-            key={`${selectedLanguage}-${searchQuery}-${selectedDifficulty}`}
+            key={`${selectedLanguage}-${searchQuery}-${selectedDifficulty}-${JSON.stringify(selectedCategories)}`}
             solutions={solutions}
             selectedLanguage={selectedLanguage}
             selectedDifficulty={selectedDifficulty}
