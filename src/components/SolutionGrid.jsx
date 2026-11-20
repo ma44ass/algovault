@@ -11,39 +11,43 @@ export default function SolutionGrid({
   selectedCategories = [],
 }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
+  
   const filteredSolutions = solutions.filter((item) => {
     const matchesLanguage =
       selectedLanguage === "all" ||
-      item.language.toLowerCase() === selectedLanguage.toLowerCase();
+      item.language?.toLowerCase() === selectedLanguage.toLowerCase();
 
     const matchesDifficulty =
       selectedDifficulty === "all" ||
       item.difficulty?.toLowerCase() === selectedDifficulty.toLowerCase();
 
-    const matchesCategory = 
+    const matchesCategory =
       selectedCategories.length === 0 ||
-      selectedCategories.some((category) =>
-      category.toLowerCase()=== item.category?.toLowerCase());
-
+      selectedCategories.some(
+        (category) => category.toLowerCase() === item.category?.toLowerCase(),
+      );
 
     const query = searchQuery.toLowerCase();
 
     const matchesSearch =
-      item.title.toLowerCase().includes(query) ||
-      item.category.toLowerCase().includes(query) ||
-      item.description.toLowerCase().includes(query) ||
-      item.language.toLowerCase().includes(query);
+      item.title?.toLowerCase().includes(query) ||
+      item.category?.toLowerCase().includes(query) ||
+      item.description?.toLowerCase().includes(query) ||
+      item.language?.toLowerCase().includes(query);
 
-    return matchesLanguage && matchesDifficulty &&  matchesCategory && matchesSearch;
+    return (
+      matchesLanguage && matchesDifficulty && matchesCategory && matchesSearch
+    );
   });
 
   if (filteredSolutions.length === 0) {
     return (
       <div className="text-center py-12 bg-[#F7F4EA] border border-[#E5E0D8] rounded-2xl">
-        <p className="text-[#6C726E] font-medium">No solutions found.</p>
-        <p className="text-[#8A908C] text-xs mt-1">
-          Try adjusting your category checkboxes, difficulty filter, or search query.
+        <p className="text-[#1A1C1A] font-medium">No solutions found.</p>
+        <p className="text-[#6C726E] text-sm mt-1">
+          Try adjusting your category checkboxes, difficulty filter, or search
+          query.
         </p>
       </div>
     );
@@ -58,13 +62,23 @@ export default function SolutionGrid({
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-3">
+      <div className="bg-[#FBF9F1] border border-[#E5E0D8] rounded-lg overflow-hidden divide-y divide-[#E5E0D8]">
         {currentSolutions.map((solution) => (
-          <SolutionCard
+          <div
             key={solution.id}
-            solution={solution}
-            onOpenModal={onOpenModal}
-          />
+            role="button"
+            tabIndex={0}
+            onClick={() => onOpenModal(solution)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onOpenModal(solution);
+              }
+            }}
+            className="group cursor-pointer"
+          >
+            <SolutionCard solution={solution} />
+          </div>
         ))}
       </div>
 
