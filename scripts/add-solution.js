@@ -1,9 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import process from 'node:process';
+import { fileURLToPath } from 'url';
 
-const solutionsPath = path.resolve('src/data/solutions.json');
-const stagingPath = path.resolve('src/data/new-solution.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const solutionsPath = path.resolve(__dirname, '../src/data/solutions.json');
+const stagingPath = path.resolve(__dirname, '../src/data/new-solution.json');
 
 
 try{
@@ -32,19 +36,26 @@ try{
     fs.writeFileSync(solutionsPath, JSON.stringify(solutions, null, 2));
 
     const emptyTemplate = {
-        title : "",
-        language : "javaScript",
-        difficulty : "Easy",
-        category : "Basic Algorithm Scripting",
-        description : "",
-        src: "freeCodeCamp",
-        approaches : [
-            {
-                "name" : "Approach 1: ",
-                "description" : "",
-                "code": ""
-            }
-        ]
+    title: "Symmetric Difference Function",
+    language: "javaScript",
+    difficulty: "Easy",
+    category: "Intermediate Algorithm Scripting",
+    description:
+      "Compare two arrays and return a new array with any items found in only one of the two given arrays, but not both.",
+    src: "freeCodeCamp",
+    approaches: [
+      {
+        name: "Approach 1: Filter + Includes (O(n * m))",
+        description:
+          "Filter each array independently for elements missing from the other array using .includes(), then merge both unique lists without mutating the original inputs.",
+        code: `function diffArray(arrA, arrB) {
+  const onlyInA = arrA.filter((el) => !arrB.includes(el));
+  const onlyInB = arrB.filter((el) => !arrA.includes(el));
+
+  return [...onlyInA, ...onlyInB];
+}`
+      },
+    ]
     };
 
     fs.writeFileSync(stagingPath, JSON.stringify(emptyTemplate, null, 2));
