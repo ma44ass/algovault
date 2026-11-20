@@ -8,6 +8,7 @@ export default function SolutionGrid({
   selectedDifficulty,
   searchQuery,
   onOpenModal,
+  selectedCategories = [],
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -20,14 +21,21 @@ export default function SolutionGrid({
       selectedDifficulty === "all" ||
       item.difficulty?.toLowerCase() === selectedDifficulty.toLowerCase();
 
+    const matchesCategory = 
+      selectedCategories.length === 0 ||
+      selectedCategories.some((category) =>
+      category.toLowerCase()=== item.category?.toLowerCase());
+
+
     const query = searchQuery.toLowerCase();
+
     const matchesSearch =
       item.title.toLowerCase().includes(query) ||
       item.category.toLowerCase().includes(query) ||
       item.description.toLowerCase().includes(query) ||
       item.language.toLowerCase().includes(query);
 
-    return matchesLanguage && matchesDifficulty && matchesSearch;
+    return matchesLanguage && matchesDifficulty &&  matchesCategory && matchesSearch;
   });
 
   if (filteredSolutions.length === 0) {
@@ -35,7 +43,7 @@ export default function SolutionGrid({
       <div className="text-center py-12 bg-[#F7F4EA] border border-[#E5E0D8] rounded-2xl">
         <p className="text-[#6C726E] font-medium">No solutions found.</p>
         <p className="text-[#8A908C] text-xs mt-1">
-          Try adjusting your filters or search query.
+          Try adjusting your category checkboxes, difficulty filter, or search query.
         </p>
       </div>
     );
@@ -62,22 +70,22 @@ export default function SolutionGrid({
 
       {totalPages > 1 && (
         <div className="flex items-center justify-between pt-4 border-t border-[#E5E0D8]">
-          <span className=" text-xs text-[#8A908C] font-medium">
+          <span className=" text-md text-[#8A908C] font-medium">
             Showing {startIndex + 1} to{" "}
             {Math.min(startIndex + itemsPerPage, filteredSolutions.length)} of{" "}
             {filteredSolutions.length} solutions
           </span>
 
-          <div className=" flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="px-3 py-1.5 rounded-sm bg-[#F7F4EA] border border-[#E5E0D8] text-xs font-semibold text-[#1A1C1A] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#EFEADF] transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-sm bg-[#F7F4EA] border border-[#E5E0D8] text-md font-semibold text-[#1A1C1A] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#EFEADF] transition-colors cursor-pointer"
             >
               &larr; Prev
             </button>
 
-            <span className="text-xs font-semibold text-[#6C726E] px-2">
+            <span className="text-md font-semibold text-[#6C726E] px-2">
               Page {currentPage} of {totalPages}
             </span>
 
@@ -86,7 +94,7 @@ export default function SolutionGrid({
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
-              className="px-3 py-1.5 rounded-lg bg-[#F7F4EA] border border-[#E5E0D8] text-xs font-semibold text-[#1A1C1A] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#EFEADF] transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-sm bg-[#F7F4EA] border border-[#E5E0D8] text-md font-semibold text-[#1A1C1A] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#EFEADF] transition-colors cursor-pointer"
             >
               Next &rarr;
             </button>

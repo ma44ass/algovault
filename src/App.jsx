@@ -13,8 +13,17 @@ export default function App() {
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSolution, setSelectedSolution] = useState(null);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   const totalSolutions = solutions.length;
+
+  const handleToggleCategory = (category) => {
+    setSelectedCategories((prev) =>
+    prev.includes(category) 
+     ? prev.filter((item) => item !== category)
+     : [...prev,category]
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FBF9F1] text-[#2C302E] font-sans flex">
@@ -22,6 +31,9 @@ export default function App() {
         solutions={solutions}
         selectedLanguage={selectedLanguage}
         setSelectedLanguage={setSelectedLanguage}
+        selectedCategories={selectedCategories}
+        onToggleCategory={handleToggleCategory}
+        onClearCategories={()=> setSelectedCategories([])}
       />
 
       <main className="flex-1 flex flex-col min-w-0">
@@ -41,7 +53,9 @@ export default function App() {
             selectedLanguage={selectedLanguage}
             selectedDifficulty={selectedDifficulty}
             searchQuery={searchQuery}
+            selectedCategories={selectedCategories}
             onOpenModal={(solution) => setSelectedSolution(solution)}
+            
           />
         </div>
       </main>
