@@ -392,5 +392,31 @@
         "code": "function destroyer(arr, ...valuesToRemove) {\n  const toRemove = new Set(valuesToRemove);\n  return arr.filter((item) => !toRemove.has(item));\n}"
       }
     ]
+  },
+  {
+    "id": 20,
+    "title": "Matching Object Filter",
+    "language": "javascript",
+    "difficulty": "Easy",
+    "category": "Array Transformation",
+    "description": "Filter an array of objects and return only those objects that match all key-value pairs in a given source object.",
+    "src": "FreeCodeCamp",
+    "approaches": [
+      {
+        "name": "Approach 1: Filter + Object.entries() + Some",
+        "description": "Converts sourceObject into [key, value] pairs with Object.entries(), then uses .some() to check if any pair is missing from an object or has a different value. Short-circuits on the first mismatch and keeps the object only when !hasMismatch.",
+        "code": "function whatIsInAName(objectArray, sourceObject) {\n  const sourceEntries = Object.entries(sourceObject);\n\n  return objectArray.filter((object) => {\n    const hasMismatch = sourceEntries.some(\n      ([key, value]) => !Object.hasOwn(object, key) || object[key] !== value\n    );\n    return !hasMismatch;\n  });\n}"
+      },
+      {
+        "name": "Approach 2: Filter + Object.keys() + Every",
+        "description": "Extracts the required property names from sourceObject using Object.keys(), then uses .every() to verify that every key exists on the candidate object and strictly equals sourceObject[key]. Stops immediately if any key fails.",
+        "code": "function whatIsInAName(objectArray, sourceObject) {\n  const sourceKeys = Object.keys(sourceObject);\n\n  return objectArray.filter((object) =>\n    sourceKeys.every(\n      (key) =>\n        Object.prototype.hasOwnProperty.call(object, key) &&\n        object[key] === sourceObject[key]\n    )\n  );\n}"
+      },
+      {
+        "name": "Approach 3: Filter + Object.entries() + For..Of Loop",
+        "description": "Iterates through [key, value] entries of sourceObject with a for...of loop for each candidate object, returning false immediately on the first missing key or value mismatch and returning true if all entries pass.",
+        "code": "function whatIsInAName(objectArray, sourceObject) {\n  const sourceEntries = Object.entries(sourceObject);\n\n  return objectArray.filter((object) => {\n    for (const [key, value] of sourceEntries) {\n      if (!Object.hasOwn(object, key) || object[key] !== value) {\n        return false;\n      }\n    }\n\n    return true;\n  });\n}"
+      }
+    ]
   }
 ]
