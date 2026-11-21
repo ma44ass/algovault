@@ -371,5 +371,26 @@
         "code": "function sortByYear(bookA, bookB) {\n  if (bookA.releaseYear < bookB.releaseYear) {\n    return -1;\n  }\n\n  if (bookA.releaseYear > bookB.releaseYear) {\n    return 1;\n  }\n\n  return 0;\n}\n\nconst max_release_year = 1965;\nconst filteredBooks = books.filter(\n  (book) => book.releaseYear <= max_release_year\n);\n\nfilteredBooks.sort(sortByYear);"
       }
     ]
+  },
+  {
+    "id": 19,
+    "title": "Seek and Destroy",
+    "language": "javascript",
+    "difficulty": "Easy",
+    "category": "Sets & Membership",
+    "description": "Take an initial array as the first argument, followed by one or more additional arguments representing the values to remove, and return a new array without those values.",
+    "src": "FreeCodeCamp",
+    "approaches": [
+      {
+        "name": "Approach 1: Rest Parameters + Filter + Includes",
+        "description": "Collect all target removal values into an array using rest parameters, then filter the initial array to keep only elements that do not appear in the removal list.",
+        "code": "function destroyer(arr, ...valuesToRemove) {\n  return arr.filter((item) => !valuesToRemove.includes(item));\n}"
+      },
+      {
+        "name": "Approach 2: Rest Parameters + Set + Filter",
+        "description": "Gather the values to remove via rest parameters, convert them into a Set for constant-time average lookups, and filter the initial array for items absent from that Set.",
+        "code": "function destroyer(arr, ...valuesToRemove) {\n  const toRemove = new Set(valuesToRemove);\n  return arr.filter((item) => !toRemove.has(item));\n}"
+      }
+    ]
   }
 ]
