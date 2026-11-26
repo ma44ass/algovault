@@ -14,6 +14,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSolution, setSelectedSolution] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const totalSolutions = solutions.length;
 
@@ -34,6 +35,8 @@ export default function App() {
         selectedCategories={selectedCategories}
         onToggleCategory={handleToggleCategory}
         onClearCategories={()=> setSelectedCategories([])}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
 
       <main className="flex-1 flex flex-col min-w-0">
@@ -42,6 +45,8 @@ export default function App() {
           setSearchQuery={setSearchQuery}
           selectedDifficulty={selectedDifficulty}
           setSelectedDifficulty={setSelectedDifficulty}
+          onOpenSidebar={() => setSidebarOpen(true)}
+          activeFilterCount={selectedCategories.length}
         />
 
         <div className="p-8 overflow-y-auto">
